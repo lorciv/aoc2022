@@ -18,12 +18,12 @@ func start(s string) bool {
 	return true
 }
 
-func detect(s string) int {
+func detect(s string, n int) int {
 	if len(s) < 4 {
 		return -1
 	}
-	for i := 4; i < len(s); i++ {
-		if start(s[i-4 : i]) {
+	for i := n; i < len(s); i++ {
+		if start(s[i-n : i]) {
 			return i
 		}
 	}
@@ -35,6 +35,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	pos := detect(string(buf))
-	fmt.Println(pos)
+	fmt.Printf("start-of-packet: %d\n", detect(string(buf), 4))
+	fmt.Printf("start-of-message: %d\n", detect(string(buf), 14))
 }
