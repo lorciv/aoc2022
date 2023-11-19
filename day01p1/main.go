@@ -28,5 +28,10 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// Last group
+	if sum > max {
+		max = sum
+	}
+
 	fmt.Println(max)
 }
